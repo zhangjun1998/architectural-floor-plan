@@ -1,3 +1,23 @@
+作用：平面图的识别，可以识别门框和墙体
+
+原理：通过对图片进行二值处理，筛选出高于某些黑度阈值的像素。因为在平面图中墙体的颜色大部分都是深灰色/黑色，高于普通结构的值，所以能够提取出来。另外还进行了一些噪声处理和连通性补全，可以消除一些噪点，以及补全缝隙。
+
+限制：不同图片的二值化情况不一样，需要人肉眼去调整阈值，才能够达到最优的情况
+
+运行环境：jdk11
+
+运行步骤：按照下面提供的命令运行即可，需要注意的是由于网络环境问题可能下载依赖会失败，可以通过给命令行设置代理解决；另外需要修改 `build.gradle` 文件增加国内镜像源。
+
+```
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' } 
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    mavenCentral()
+    jcenter()
+}
+```
+
+
 # Automatic analysis and simplification of architectural floor plans [![Build Status](https://travis-ci.org/cansik/architectural-floor-plan.svg?branch=master)](https://travis-ci.org/cansik/architectural-floor-plan) [![codebeat badge](https://codebeat.co/badges/244f2179-f84e-4a39-8943-3285d0cf8337)](https://codebeat.co/projects/github-com-cansik-architectural-floor-plan) [![DOI](https://zenodo.org/badge/69436030.svg)](https://zenodo.org/badge/latestdoi/69436030)
 This software is an architectural floor plan analysis and recognition system to create extended plans for building services.
 
